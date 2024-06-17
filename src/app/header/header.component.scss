@@ -1,0 +1,68 @@
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #4f2b69;
+  margin: 0%;
+  gap: 2%;
+  padding: 0% 1%;
+  position: sticky;
+  top: 0;
+  height: 50px;
+  z-index: 999;
+}
+
+.title-search-cotainer {
+  display: flex;
+  width: 90%;
+  gap: 2%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.title {
+  margin: 0%;
+  font-size: 32px;
+  color: whitesmoke;
+  font-family: "Berlin Sans FB";
+  font-weight: 500;
+}
+
+.title:hover {
+  color: white;
+}
+
+.user-container {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 10px;
+  padding-right: 20px;
+  height: 65%;
+  background-color: #703d95;
+  border-radius: 1vw;
+  border: 0;
+}
+
+.user-container:hover {
+  background-color: #8447af;
+  border-bottom: #8447af;
+}
+
+.account-icon {
+  color: white;
+  font-size: 25px;
+}
+
+.admin-icon {
+  color: white;
+  font-size: 20px;
+  padding-top: 3px;
+}
+
+.user-name {
+  margin: 0;
+  color: white;
+  font-size: 18px;
+}

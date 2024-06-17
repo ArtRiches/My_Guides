@@ -1,0 +1,45 @@
+<div [ngSwitch]="whatList" class="guide-container">
+  <!-- SHOW ALL GUIDES ON THE PAGE -->
+  <ng-template *ngSwitchCase="'guide'" ngFor let-guide [ngForOf]="guideList">
+    <a [routerLink]="['/details', guide.id]" class="guide-item_a">
+      <img class="item-photo" [src]="guide.photo[0]" alt="{{ guide.name }}" />
+
+      <p class="item-title">{{ guide.name }}</p>
+
+      <p class="item-location">
+        <mat-icon> location_on</mat-icon>{{ guide.city }}, {{ guide.country }}
+      </p>
+    </a>
+  </ng-template>
+
+  <!-- SHOW ALL USER FAVORITE GUIDES -->
+  <ng-template
+    *ngSwitchCase="'favorite'"
+    ngFor
+    let-guide
+    [ngForOf]="userFavoriteGuides"
+  >
+    <a [routerLink]="['/details', guide.id]" class="guide-item_a">
+      <img class="item-photo" [src]="guide.photo[0]" alt="{{ guide.name }}" />
+
+      <p class="item-title">{{ guide.name }}</p>
+
+      <p class="item-location">
+        <mat-icon> location_on</mat-icon>{{ guide.city }}, {{ guide.country }}
+      </p>
+    </a>
+  </ng-template>
+
+  <!-- SHOW ALL USERS GUIDES -->
+  <ng-template *ngSwitchCase="'user'" ngFor let-guide [ngForOf]="userGuides">
+    <a [routerLink]="['/details', guide.id]" class="guide-item_a">
+      <img class="item-photo" [src]="guide.photo[0]" alt="{{ guide.name }}" />
+
+      <p class="item-title">{{ guide.name }}</p>
+
+      <p class="item-location">
+        <mat-icon> location_on</mat-icon>{{ guide.city }}, {{ guide.country }}
+      </p>
+    </a>
+  </ng-template>
+</div>

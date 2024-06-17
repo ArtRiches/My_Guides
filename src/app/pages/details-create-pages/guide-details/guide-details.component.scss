@@ -1,0 +1,167 @@
+.change-apply-btn {
+  position: fixed;
+  top: 100;
+  left: 89.5%;
+  opacity: 1;
+}
+.main-div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  margin: 2% 15%;
+  gap: 20px;
+  padding-bottom: 70px;
+}
+
+.first-div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  font-family: "Tahoma";
+  font-size: 38px;
+  height: max-content;
+}
+
+.second-div {
+  display: flex;
+  width: 100%;
+  gap: 5%;
+  min-height: 588.56px;
+}
+
+.photos-div {
+  display: flex;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.btn-div {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 15px;
+  top: 50%;
+  gap: 675px;
+}
+
+button {
+  font-size: 22px;
+  background-color: #4f2b69;
+  opacity: 0.4;
+}
+
+.favorite-btn {
+  opacity: 1;
+  width: 32px;
+  height: 32px;
+  background-color: gray;
+}
+
+.favorite {
+  transition: 500ms;
+  background-color: #4f2b69;
+}
+
+.next-btn:hover {
+  transition: 250ms;
+  opacity: 0.9;
+}
+
+.prev-btn:hover {
+  transition: 250ms;
+  opacity: 0.9;
+}
+
+.info-div {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 50%;
+  padding: 2%;
+  border-radius: 0.5vw;
+  box-shadow: 2px 3px 4px rgb(0, 0, 0);
+}
+
+.title {
+  font-family: "Tahoma";
+  font-size: 28px;
+}
+
+.info-description {
+  font-family: "Tahoma";
+  font-size: 18px;
+  white-space: pre-line;
+}
+
+.third-div {
+  display: flex;
+  width: 100%;
+  gap: 3%;
+  margin-bottom: 100px;
+}
+
+.description-container {
+  min-width: 60%;
+}
+
+.descriptions-div {
+  font-family: "Tahoma";
+  font-size: 22px;
+  min-width: 100%;
+}
+
+textarea {
+  min-width: 100%;
+  max-width: 100%;
+  height: max-content;
+  font-family: "Tahoma";
+  font-size: 18px;
+}
+
+.name-input {
+  font-family: "Tahoma";
+  font-size: 38px;
+  width: 100%;
+}
+
+.add-btn {
+  opacity: 1;
+}
+
+.delete-btn-div {
+  position: absolute;
+  display: flex;
+}
+
+.delete-btn-div button {
+  font-size: 18px;
+  height: 28px;
+  width: 28px;
+  margin: 8px;
+  margin-left: 742px;
+}
+
+.delete-btn-div button:hover {
+  opacity: 1;
+}
+
+.create-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.create-btn {
+  width: max-content;
+  opacity: 1;
+}

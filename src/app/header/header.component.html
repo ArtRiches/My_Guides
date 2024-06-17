@@ -1,0 +1,41 @@
+<header class="header">
+  <div class="title-search-cotainer">
+    <a [routerLink]="['/']">
+      <h1 class="title">My Guides</h1>
+    </a>
+  </div>
+
+  <ng-container *ngIf="userName; else login">
+    <button [matMenuTriggerFor]="menu" class="user-container">
+      <mat-icon *ngIf="userName == adminName" class="admin-icon">
+        build
+      </mat-icon>
+
+      <mat-icon *ngIf="userName != adminName" class="account-icon">
+        face
+      </mat-icon>
+
+      <p class="user-name">{{ userName }}</p>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="routeToMyPage()">
+        <mat-icon class="account-icon">account_circle</mat-icon>
+        My page
+      </button>
+
+      <button mat-menu-item (click)="logOut()">
+        <mat-icon class="account-icon">exit_to_app</mat-icon>
+        Log out
+      </button>
+    </mat-menu>
+  </ng-container>
+
+  <ng-template #login>
+    <button [routerLink]="['/auth']" class="user-container">
+      <mat-icon class="account-icon">account_circle</mat-icon>
+
+      <p class="user-name">Login</p>
+    </button>
+  </ng-template>
+</header>

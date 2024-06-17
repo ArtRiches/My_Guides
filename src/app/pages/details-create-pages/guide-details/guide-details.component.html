@@ -1,0 +1,12 @@
+<app-guide-page
+  [isCreatePage]="false"
+  [userName]="userName"
+  [isFavorite]="isFavorite"
+  [photoList]="photoList"
+  [guide]="guide"
+  [userFavoriteGuides]="userFavoriteGuides"
+  [photoId]="photoId"
+  (toggleFavoriteEvent)="toggleFavorite()"
+  (nextPhotoEvent)="nextPhoto()"
+  (prevPhotoEvent)="prevPhoto()"
+></app-guide-page>

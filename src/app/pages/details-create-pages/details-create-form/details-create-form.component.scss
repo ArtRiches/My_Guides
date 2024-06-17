@@ -1,0 +1,189 @@
+p {
+  margin: 0;
+}
+
+.change-apply-btn {
+  position: fixed;
+  top: 93%;
+  left: 96%;
+}
+
+button {
+  font-size: 22px;
+  background-color: #4f2b69;
+}
+
+.main-div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  margin: 2% 15%;
+  gap: 20px;
+  padding-bottom: 100px;
+}
+
+.first-div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  font-family: "Tahoma";
+  font-size: 38px;
+}
+
+.favorite-btn {
+  width: 32px;
+  height: 32px;
+  background-color: gray;
+}
+
+.favorite {
+  transition: 500ms;
+  background-color: #4f2b69;
+}
+
+.second-div {
+  display: flex;
+  width: 100%;
+  gap: 4%;
+  min-height: 588.56px;
+  max-height: 588.56px;
+}
+
+.photos-div {
+  display: flex;
+  position: relative;
+  width: 69%;
+  max-width: 846.42px;
+  min-width: 846.42px;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.uploadPhoto {
+  display: flex;
+  align-self: center;
+  margin: 0 37.7%;
+}
+
+.prev-next-btn-container {
+  display: flex;
+  position: absolute;
+  align-self: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.prev-next-btn-container button {
+  margin: 0 8px;
+  font-size: 22px;
+  background-color: #4f2b69;
+  opacity: 0.35;
+}
+
+.prev-next-btn-container button:hover {
+  transition: 250ms;
+  opacity: 0.9;
+}
+
+.upload-delete-btn-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.delete-btn{
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 18px;
+  height: 28px;
+  width: 28px;
+  opacity: 0.35;
+}
+
+.delete-btn:hover {
+  opacity: 1;
+}
+
+.info-div {
+  display: flex;
+  flex-direction: column;
+  width: 27%;
+  padding: 1.5%;
+  border-radius: 0.5vw;
+  box-shadow: 2px 3px 4px rgb(0, 0, 0);
+
+}
+
+.title {
+  font-family: "Tahoma";
+  font-size: 28px;
+  margin: 0;
+}
+
+.createInfo-container div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cityStateForm-content {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Tahoma";
+  font-size: 16px;
+}
+
+
+.transport-chip mat-chip-option mat-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.third-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 25px;
+  margin-top: 45px;
+  gap: 40px;
+}
+
+.description-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 30px;
+}
+
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.name-input {
+  font-family: "Tahoma";
+  font-size: 38px;
+  width: 100%;
+}
+
+.create-btn-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+

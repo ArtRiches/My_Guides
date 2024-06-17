@@ -1,0 +1,24 @@
+<div class="description-container">
+  <div class="description-div">
+    <p class="title">{{ titleName }}</p>
+    <ng-container *ngIf="!isCreatePage; else create">
+      <p class="text">
+        {{ guideText }}
+      </p>
+    </ng-container>
+    <ng-template #create>
+      <form *ngIf="!seeResult && textForm != null" [formGroup]="textForm">
+        <mat-form-field class="textarea">
+          <textarea
+            matInput
+            type="text"
+            [formControlName]="formControlName"
+          ></textarea>
+        </mat-form-field>
+      </form>
+      <p *ngIf="seeResult" class="text">
+        {{ newGuideText }}
+      </p>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<section class="listing-apply">
+  <h2 class="section-heading">{{ header_text }}</h2>
+  <p>{{ text_under_header }}</p>
+  <form *ngIf="applyForm != null" [formGroup]="applyForm" class="form">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput id="email" type="email" [formControlName]="'email'" />
+      <mat-error *ngIf="email?.invalid">
+        {{ email_error_text }}
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input
+        matInput
+        id="password"
+        [type]="hidden ? 'password' : 'text'"
+        formControlName="password"
+      />
+      <mat-icon matIconSuffix (click)="hidden = !hidden">{{
+        hidden ? "visibility_off" : "visibility"
+      }}</mat-icon>
+      <mat-error *ngIf="password?.invalid"> Password is required </mat-error>
+    </mat-form-field>
+
+    <span *ngIf="isAuth">
+      Don't have an account yet?
+      <a [routerLink]="['/registration']">Registration</a>
+    </span>
+
+    <button
+      mat-stroked-button
+      [disabled]="applyForm.invalid"
+      (click)="onClick()"
+      class="apply-btn"
+    >
+      {{ button_text }}
+    </button>
+  </form>
+</section>
