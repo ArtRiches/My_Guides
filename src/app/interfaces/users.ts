@@ -14,11 +14,11 @@ const ADMIN: Users = {
     userGuides: []
 }
 
-const IVAN: Users = {
-    email: "ivan@gmail.com",
-    password: "Ivan1111",
+const USER1: Users = {
+    email: "user1@gmail.com",
+    password: "User1111",
     favoriteGuides: [],
     userGuides: []
 }
 
-export const UsersList: Users[] = [ADMIN, IVAN];
+export const UsersList: Users[] = [ADMIN, USER1];
