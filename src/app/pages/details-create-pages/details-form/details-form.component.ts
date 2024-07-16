@@ -41,8 +41,8 @@ import { TextareaFormComponent } from '../textarea-form/textarea-form.component'
     TextareaFormComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  templateUrl: './details-create-form.component.html',
-  styleUrl: './details-create-form.component.scss',
+  templateUrl: './details-form.component.html',
+  styleUrl: './details-form.component.scss',
 })
 export class GuidePageComponent {
   transports: string[] = [
@@ -88,6 +88,7 @@ export class GuidePageComponent {
   ngOnChanges(): void {
     this.latitude = this.infoForm?.get('latitude');
     this.longitude = this.infoForm?.get('longitude');
+    
   }
 
   toggleFavorite() {

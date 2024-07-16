@@ -1,41 +1,27 @@
-
 p {
   margin: 0;
 }
 
-.gap {
+.container {
   display: flex;
   flex-direction: column;
   margin-top: 15px;
-  gap: 10px;
+  gap: 12px;
 }
+
 .item-location {
-    display: flex;
-    align-items: flex-end;
-    margin: 0;
-    font-size: 16px;
-    font-family: "Tahoma";
-  }
+  display: flex;
+  align-items: flex-end;
+  margin: 0;
+  font-size: 18px;
+  font-family: "Tahoma";
+}
   
-  .icons {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    font-size: 16px;
-    font-family: "Tahoma";
-    gap: 3px;
-  }
-  
-  .pop-up_text-container:hover .pop-up_text {
-    visibility: visible;
-  }
-  
-  .pop-up_text {
-    position: fixed;
-    visibility: hidden;
-    top: 205px;
-    left: 1205px;
-    padding: 3px;
-    border-radius: 0.5vw;
-    box-shadow: 2px 3px 4px rgb(0, 0, 0);
-  }
+.icons {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  font-size: 16px;
+  font-family: "Tahoma";
+  gap: 3px;
+}

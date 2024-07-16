@@ -25,7 +25,6 @@ button {
 
 .first-div {
   display: flex;
-  flex-wrap: wrap;
   width: 100%;
   font-family: "Tahoma";
   font-size: 38px;
@@ -45,7 +44,7 @@ button {
 .second-div {
   display: flex;
   width: 100%;
-  gap: 4%;
+  gap: 3%;
   min-height: 588.56px;
   max-height: 588.56px;
 }
@@ -53,9 +52,7 @@ button {
 .photos-div {
   display: flex;
   position: relative;
-  width: 69%;
-  max-width: 846.42px;
-  min-width: 846.42px;
+  width: 70%;
 }
 
 .photo {
@@ -69,6 +66,18 @@ button {
   display: flex;
   align-self: center;
   margin: 0 37.7%;
+
+  p {
+    display: block;
+    position: relative;
+    top: 50%;
+    right: 135%;
+    width: max-content;
+  }
+
+  button {
+    width: max-content;
+  }
 }
 
 .prev-next-btn-container {
@@ -117,10 +126,10 @@ button {
   display: flex;
   flex-direction: column;
   width: 27%;
-  padding: 1.5%;
+  padding: 1%;
+  height: max-content;
   border-radius: 0.5vw;
   box-shadow: 2px 3px 4px rgb(0, 0, 0);
-
 }
 
 .title {
@@ -129,11 +138,16 @@ button {
   margin: 0;
 }
 
-.createInfo-container div {
+.createInfo-container {
   display: flex;
   flex-direction: column;
   gap: 5px;
+
+  p {
+    margin-bottom: 5px;
+  }
 }
+
 
 .cityStateForm-content {
   display: flex;
@@ -141,7 +155,6 @@ button {
   font-family: "Tahoma";
   font-size: 16px;
 }
-
 
 .transport-chip mat-chip-option mat-icon {
   display: flex;

@@ -1,4 +1,4 @@
-<div class="gap">
+<div class="container">
   <div class="item-location">
     <mat-icon>location_on</mat-icon>
     <p>{{ guide?.city }}</p>
@@ -7,14 +7,8 @@
   </div>
 
   <div class="icons">
-    <div class="pop-up_text-container">
-      <mat-icon *ngIf="guide?.fee">attach_money</mat-icon>
-      <mat-icon *ngIf="!guide?.fee">money_off</mat-icon>
-      <!-- <p class="pop-up_text">No fee</p> -->
-    </div>
-
-    <mat-icon *ngIf="guide?.inside">business</mat-icon>
-    <mat-icon *ngIf="!guide?.inside">landscape</mat-icon>
+    <mat-icon> {{ guide?.fee ? "attach_money" : "money_off" }} </mat-icon>
+    <mat-icon> {{ guide?.inside ? "business" : "landscape" }} </mat-icon>
 
     <div *ngFor="let transport of guide?.transports">
       <mat-icon>{{ transport }}</mat-icon>
@@ -23,8 +17,8 @@
 
   <google-map
     *ngIf="center != null"
-    [width]="346.24"
-    [height]="400"
+    [width]="346"
+    [height]="438"
     [center]="center!"
   >
     <map-marker [position]="center"></map-marker>

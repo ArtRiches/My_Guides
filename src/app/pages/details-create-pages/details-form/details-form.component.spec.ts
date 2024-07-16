@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GuidePageComponent } from './details-create-form.component';
+import { GuidePageComponent } from './details-form.component';
 
 describe('GuidePageComponent', () => {
   let component: GuidePageComponent;

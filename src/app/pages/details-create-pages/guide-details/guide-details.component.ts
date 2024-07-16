@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { Guide } from 'app/interfaces/guides';
 import { GuideService } from 'app/guide.service';
 import { AuthRepository } from 'app/stores/user-repository';
-import { GuidePageComponent } from 'app/pages/details-create-pages/details-create-form/details-create-form.component';
+import { GuidePageComponent } from 'app/pages/details-create-pages/details-form/details-form.component';
 
 @Component({
   selector: 'app-guide-details',

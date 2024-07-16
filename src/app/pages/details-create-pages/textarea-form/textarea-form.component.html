@@ -1,12 +1,13 @@
 <div class="description-container">
   <div class="description-div">
-    <p class="title">{{ titleName }}</p>
     <ng-container *ngIf="!isCreatePage; else create">
+      <p *ngIf="(guideText != '' && guideText != null)" class="title">{{ titleName }}</p>
       <p class="text">
         {{ guideText }}
       </p>
     </ng-container>
     <ng-template #create>
+      <p *ngIf="newGuideText?.length != 0 || !seeResult" class="title">{{ titleName }}</p>
       <form *ngIf="!seeResult && textForm != null" [formGroup]="textForm">
         <mat-form-field class="textarea">
           <textarea

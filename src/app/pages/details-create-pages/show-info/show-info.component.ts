@@ -17,7 +17,6 @@ center: google.maps.LatLngLiteral = { lat: 0, lng: 0 };
 
 constructor() {}
 
-
 ngOnChanges() {
   this.center = { lat: this.guide?.lat ?? 0, lng: this.guide?.lng ?? 0}
 }
