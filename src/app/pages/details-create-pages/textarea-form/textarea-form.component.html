@@ -1,11 +1,13 @@
 <div class="description-container">
   <div class="description-div">
+
     <ng-container *ngIf="!isCreatePage; else create">
       <p *ngIf="(guideText != '' && guideText != null)" class="title">{{ titleName }}</p>
       <p class="text">
         {{ guideText }}
       </p>
     </ng-container>
+
     <ng-template #create>
       <p *ngIf="newGuideText?.length != 0 || !seeResult" class="title">{{ titleName }}</p>
       <form *ngIf="!seeResult && textForm != null" [formGroup]="textForm">
@@ -15,11 +17,15 @@
             type="text"
             [formControlName]="formControlName"
           ></textarea>
+          <mat-error *ngIf="textForm.invalid && titleName=='About this place'">
+            <p> Text is required </p>
+           </mat-error>
         </mat-form-field>
       </form>
       <p *ngIf="seeResult" class="text">
         {{ newGuideText }}
       </p>
     </ng-template>
+
   </div>
 </div>

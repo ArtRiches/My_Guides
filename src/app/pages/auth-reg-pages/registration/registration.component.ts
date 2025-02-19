@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-import { Users, UsersList } from 'app/interfaces/users';
+import { User } from 'app/interfaces/user';
 import { AuthRegFormComponent } from 'app/pages/auth-reg-pages/auth-reg-form/auth-reg-form.component';
+import { UserService } from 'app/services/user.service';
 
 @Component({
   selector: 'app-registration',
@@ -28,7 +29,7 @@ export class RegistrationComponent {
 
   subscription = new Subscription();
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit(): void {
     this.subscription.add(
@@ -41,23 +42,28 @@ export class RegistrationComponent {
     );
   }
 
-  onClick(): void {
-    const access = UsersList.find(
-      (user) => user.email === this.applyForm.controls.email.value
-    );
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
-    if (access != null) {
-      this.email_error_text = 'A user with this email already exists';
-      this.applyForm.controls.email.setErrors({ userFound: true });
-    } else {
-      const NEWUSER: Users = {
-        email: this.applyForm.controls.email.value!,
-        password: this.applyForm.controls.password.value!,
-        favoriteGuides: [],
-        userGuides: [],
-      };
-      UsersList.push(NEWUSER);
-      this.router.navigate(['/auth']);
-    }
+  onClick(): void {
+
+      const access = null;
+      
+        
+        if (access != null) {
+          this.email_error_text = 'A user with this email already exists';
+          this.applyForm.controls.email.setErrors({ userFound: true });
+        } else {
+          const NEWUSER: User = {
+            email: this.applyForm.controls.email.value || '',
+            favoriteGuides: [],
+            userGuides: [],
+            role: ""
+          };
+          
+          this.userService.addUser(NEWUSER).subscribe();
+          this.router.navigate(['/auth']);
+        }
   }
 }

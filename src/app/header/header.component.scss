@@ -27,10 +27,10 @@ a {
   color: whitesmoke;
   font-family: "Berlin Sans FB";
   font-weight: 500;
-}
 
-.title:hover {
-  color: white;
+  &:hover {
+    color: white;
+  }
 }
 
 .user-container {
@@ -43,11 +43,11 @@ a {
   background-color: #703d95;
   border-radius: 1vw;
   border: 0;
-}
 
-.user-container:hover {
-  background-color: #8447af;
-  border-bottom: #8447af;
+  &:hover{
+    background-color: #8447af;
+    border-bottom: #8447af;
+  }
 }
 
 .account-icon {

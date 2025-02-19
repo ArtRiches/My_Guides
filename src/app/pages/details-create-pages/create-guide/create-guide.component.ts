@@ -5,12 +5,13 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-
-import { Guide } from 'app/interfaces/guides';
-import { GuideService } from 'app/guide.service';
-import { GuidePageComponent } from 'app/pages/details-create-pages/details-form/details-form.component';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+
+import { Guide } from 'app/interfaces/guide';
+import { GuideService } from 'app/services/guide.service';
+import { GuidePageComponent } from 'app/pages/details-create-pages/guide-details/guide-details.component';
+
 
 @Component({
   selector: 'app-create-guide',
@@ -23,7 +24,6 @@ export class CreateGuideComponent {
   seeResult: boolean = true;
   btnHide: boolean = false;
   transports: string[] = [];
-  guideList: Guide[] = [];
   nameForm = new FormGroup({
     name: new FormControl<string | null>('', Validators.required),
   });
@@ -50,29 +50,32 @@ export class CreateGuideComponent {
     About: new FormControl<string | null>('', Validators.required),
   });
   newGuide: Guide = {
-    id: 0,
+    id: 4,
     name: '',
     city: '',
     country: '',
-    photo: [''],
+    photos: [{id:0, guideId:0, path:''}],
     fee: false,
     inside: false,
-    transports: [],
+    transports: [{id: 0, icon:''}],
     howText: '',
     descriptionText: '',
     lat: 0,
     lng: 0,
   };
-  photoList: string[] = this.newGuide.photo;
   photoId = 0;
 
-  constructor(private guideService: GuideService, private router: Router) {
-    this.guideList = this.guideService.getAllGuides();
-    this.newGuide.id = this.guideList.length;
+  constructor(
+    private guideService: GuideService,
+    private router: Router,
+  ) {
+    this.newGuide.photos[0].guideId =this.newGuide.id;
   }
 
   latSubscription = new Subscription();
   lngSubscription = new Subscription();
+  userGuidesSubscription = new Subscription();
+  userGuides?: Guide[];
   latErrorText: string = '';
   lngErrorText: string = '';
 
@@ -93,12 +96,19 @@ export class CreateGuideComponent {
     );
   }
 
+  ngOnDestroy(): void {
+    this.userGuidesSubscription.unsubscribe();
+    this.latSubscription.unsubscribe();
+    this.lngSubscription.unsubscribe();
+  }
+
   changeClick() {
     this.seeResult = false;
     this.btnHide = true;
-    if (this.photoList.length > 0 && this.photoList[0] != '') {
-      this.photoList[this.photoId + 1] = '';
+    if (this.newGuide.photos[0].path != '') {
+      this.newGuide.photos.push({id:this.photoId+1, guideId:0, path:''});
     }
+ 
   }
 
   applyClick() {
@@ -108,8 +118,8 @@ export class CreateGuideComponent {
       this.newGuide.name = this.nameForm.controls.name.value;
     }
 
-    if (this.photoList[this.photoList.length - 1] === '') {
-      this.photoList.splice(this.photoList.length - 1, 1);
+    if (this.newGuide.photos[this.newGuide.photos.length - 1].path === '') {
+      this.newGuide.photos.splice(this.newGuide.photos.length - 1, 1);
       this.photoId = 0;
     }
 
@@ -131,8 +141,11 @@ export class CreateGuideComponent {
 
     if (this.infoForm.controls.transport.value) {
       this.newGuide.transports = [];
+      let i = 0;
       this.infoForm.controls.transport.value.forEach((transport) => {
-        this.newGuide.transports.push(transport);
+
+        this.newGuide.transports[i] = {id: i, icon:transport};
+        i++;
       });
     }
 
@@ -160,9 +173,9 @@ export class CreateGuideComponent {
       this.infoForm.valid &&
       this.areatextForm.valid
     ) {
-      this.newGuide.photo = this.photoList;
-      this.guideList.push(this.newGuide);
-      this.router.navigate(['/details', this.newGuide.id]);
+      this.guideService.addGuide(1, this.newGuide).subscribe();
+      this.userGuides?.push(this.newGuide);
+      this.router.navigate(['/guides']);
     } else {
       this.nameForm.markAllAsTouched();
       this.uploadPhotoForm.markAllAsTouched();
@@ -174,23 +187,23 @@ export class CreateGuideComponent {
 
   uploadPhoto(event: Event) {
     const file: string = (event.target as HTMLInputElement).files![0].name;
-    this.photoList[this.photoId] = 'assets/photos/' + file;
-    this.photoList.push('');
-    console.log(this.photoList);
+    this.newGuide.photos[this.photoId].path = 'assets/photos/' + file;
+    this.newGuide.photos[this.photoId].guideId = this.newGuide.id;
+    this.newGuide.photos.push({id:-1,  guideId: -1, path:''});
   }
 
   deletePhoto() {
-    this.photoList.splice(this.photoId, 1);
+    this.newGuide.photos.splice(this.photoId, 1);
     this.photoId = 0;
   }
 
   nextPhoto() {
-    this.photoId = (this.photoId + 1) % this.photoList.length;
+    this.photoId = (this.photoId + 1) % this.newGuide.photos.length;
   }
 
   prevPhoto() {
     if (this.photoId === 0) {
-      this.photoId = this.photoList.length - 1;
+      this.photoId = this.newGuide.photos.length - 1;
     } else {
       this.photoId = this.photoId - 1;
     }

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { Subscription } from 'rxjs';
 
-import { AuthRepository } from '../stores/user-repository';
-import { UsersList } from '../interfaces/users';
+import { JWTRepository } from 'app/repo/jwt.repo';
+import { UserRepository } from 'app/repo/user.repo';
 
 @Component({
   selector: 'app-header',
@@ -25,16 +25,23 @@ import { UsersList } from '../interfaces/users';
 export class HeaderComponent {
   subscription = new Subscription();
   userName?: string;
-  adminName = UsersList[0].email.split('@')[0];
+  adminName = 'admin';
 
-  constructor(private router: Router, private authRepository: AuthRepository) {}
+  constructor(
+    private router: Router,
+    private jwtRepo: JWTRepository,
+    private userRepo: UserRepository
+  ) {}
 
   ngOnInit(): void {
     this.subscription.add(
-      this.authRepository.user$.subscribe((user) => {
-        this.userName = user?.id.email.split('@')[0];
+      this.userRepo.isAuth().subscribe(() => {
+        if(this.userRepo.getUser()) {
+          this.userName = this.userRepo.getUser()?.split('@')[0]
+        }
       })
     );
+
   }
 
   ngOnDestroy(): void {
@@ -42,11 +49,13 @@ export class HeaderComponent {
   }
 
   routeToMyPage(): void {
-    this.router.navigate(['/user-page']);
+    this.router.navigate(['/',this.userName]);
   }
 
   logOut(): void {
-    this.userName = '';
-    this.router.navigate(['/']);
+    this.jwtRepo.clear();
+    this.userRepo.clear();
+    this.userName = undefined;
+    this.router.navigate(['/logout']);
   }
 }

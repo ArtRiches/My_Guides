@@ -2,36 +2,27 @@
   <div class="my-guides-div">
     <p class="title">My guides</p>
     <ng-container *ngIf="userGuides?.length != 0; else create">
-      <app-guide-item-div
+      <app-show-guide
         [whatList]="'user'"
-        class="app-guide-item-div"
-      ></app-guide-item-div>
+        class="app-show-guide"
+      ></app-show-guide>
     </ng-container>
     <ng-template #create>
-      <p class="message">You haven't created any guides yet.&nbsp;<a class="message-link" [routerLink]="['/create-guide']">Create a new guide</a> </p>
+      <p class="message">You haven't created any guides yet.&nbsp;<a class="message-link" [routerLink]="['/guides/add']">Create a new guide</a> </p>
     </ng-template>
   </div>
 
   <div class="favorite-guides-div">
     <p class="title">Favorite guides</p>
     <ng-container *ngIf="userFavoriteGuides?.length != 0; else goHomePage">
-      <app-guide-item-div
+      <app-show-guide
         [whatList]="'favorite'"
-        class="app-guide-item-div"
-      ></app-guide-item-div>
+        class="app-show-guide"
+      ></app-show-guide>
     </ng-container>
     <ng-template #goHomePage>
       <p class="message">You don't have any favorite guides</p>
     </ng-template>
   </div>
 
-  <ng-container *ngIf="recomendedGuides">
-    <div class="recomended-guides-div">
-      <p class="title">Recomended guides</p>
-      <app-guide-item-div
-        [whatList]="'recomended'"
-        class="app-guide-item-div"
-      ></app-guide-item-div>
-    </div>
-  </ng-container>
 </div>

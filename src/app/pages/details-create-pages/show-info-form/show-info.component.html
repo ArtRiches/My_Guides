@@ -11,7 +11,7 @@
     <mat-icon> {{ guide?.inside ? "business" : "landscape" }} </mat-icon>
 
     <div *ngFor="let transport of guide?.transports">
-      <mat-icon>{{ transport }}</mat-icon>
+      <mat-icon>{{ transport.icon }}</mat-icon>
     </div>
   </div>
 

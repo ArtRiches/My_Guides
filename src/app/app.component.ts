@@ -2,9 +2,11 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
 
-import { GuideComponent } from './pages/home/home.component'
 import { HeaderComponent } from './header/header.component';
-import { GuideItemDivComponent } from './guide-item-div/guide-item-div.component';
+import { GuideService } from './services/guide.service';
+import { UserService } from './services/user.service';
+import { AuthService } from './services/auth.service';
+
 
 
 
@@ -15,10 +17,9 @@ import { GuideItemDivComponent } from './guide-item-div/guide-item-div.component
     CommonModule, 
     RouterOutlet,
     RouterModule,
-    GuideComponent,
-    HeaderComponent,
-    GuideItemDivComponent
+    HeaderComponent
   ],
+  providers: [GuideService, UserService, AuthService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

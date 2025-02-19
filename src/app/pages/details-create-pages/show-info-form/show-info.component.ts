@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MatIconModule } from '@angular/material/icon';
-import { Guide } from 'app/interfaces/guides';
+import { Guide } from 'app/interfaces/guide';
 
 @Component({
   selector: 'app-show-info',

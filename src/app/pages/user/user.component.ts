@@ -1,16 +1,23 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
 
-import { GuideItemDivComponent } from 'app/guide-item-div/guide-item-div.component';
-import { Guide } from 'app/interfaces/guides';
-import { AuthRepository } from 'app/stores/user-repository';
+import { GuideItemDivComponent } from 'app/show-guide/show-guide.component';
+import { Guide } from 'app/interfaces/guide';
+import { UserService } from 'app/services/user.service';
+import { UserRepository } from 'app/repo/user.repo';
+import { GuideService } from 'app/services/guide.service';
 
 @Component({
   selector: 'app-user-page',
   standalone: true,
-  imports: [GuideItemDivComponent, GuideItemDivComponent, CommonModule,RouterModule],
+  imports: [
+    GuideItemDivComponent,
+    GuideItemDivComponent,
+    CommonModule,
+    RouterModule,
+  ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
 })
@@ -18,21 +25,26 @@ export class UserPageComponent {
   subscription = new Subscription();
   userGuides?: Guide[];
   userFavoriteGuides?: Guide[];
-  recomendedGuides?: Guide[];
 
-  constructor(private router: Router, private authRepository: AuthRepository) {}
+  constructor(
+    private userRepo: UserRepository,
+    private guideService: GuideService
+  ) {}
 
+  // Вызвать данные о пользователе
   ngOnInit(): void {
-    this.subscription.add(
-      this.authRepository.user$.subscribe((user) => {
-        if (user?.id.email == null) {
-          this.router.navigate(['/']);
-        } else {
-          this.userGuides = user?.id.userGuides;
-          this.userFavoriteGuides = user?.id.favoriteGuides;
-        }
-      })
-    );
+    this.userFavoriteGuides = [];
+    this.userGuides = [];
+    // if (this.userRepo.getUser() && this.userRepo.getUser()?.id) {
+    //   this.guideService.getGuidesByUserId(this.userRepo.getUser()!.id).subscribe((response: Guide[]) => {
+    //     if (response) {
+    //       this.userGuides = response;
+    //     } else {
+    //       this.userGuides = [];
+    //     }
+    //   });
+    // }
+    
   }
 
   ngOnDestroy(): void {

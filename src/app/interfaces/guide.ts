@@ -3,10 +3,10 @@ export interface Guide {
     name: string;
     city: string;
     country: string;
-    photo: string[];
+    photos: { id: number, guideId: number, path: string }[];
     fee: boolean;
     inside: boolean;
-    transports: string[];
+    transports: { id: number, icon: string }[];
     howText: string;
     descriptionText: string;
     lat: number;

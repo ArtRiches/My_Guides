@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, RouterOutlet } from '@angular/router';
 
-import { GuideItemDivComponent } from 'app/guide-item-div/guide-item-div.component';
+import { GuideItemDivComponent } from 'app/show-guide/show-guide.component';
+
 
 @Component({
   selector: 'app-guide',
@@ -12,7 +13,6 @@ import { GuideItemDivComponent } from 'app/guide-item-div/guide-item-div.compone
     CommonModule,
     MatIconModule,
     RouterModule,
-    RouterOutlet,
     GuideItemDivComponent,
   ],
   templateUrl: './home.component.html',

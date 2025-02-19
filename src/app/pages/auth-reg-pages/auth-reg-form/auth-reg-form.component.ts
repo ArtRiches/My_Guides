@@ -43,7 +43,7 @@ export class AuthRegFormComponent {
   @Input() text_under_header?: string;
   @Input() email_error_text?: string;
   @Input() button_text?: string;
-
+  @Input() csrf?: string;
   @Input() applyForm?: FormGroup;
   email?: AbstractControl | null;
   password?: AbstractControl | null;

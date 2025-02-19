@@ -2,9 +2,10 @@
   <h2 class="section-heading">{{ header_text }}</h2>
   <p>{{ text_under_header }}</p>
   <form *ngIf="applyForm != null" [formGroup]="applyForm" class="form">
+    <input type="hidden" name="_csrf" [value]="csrf">
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
-      <input matInput id="email" type="email" [formControlName]="'email'" />
+      <input matInput id="email" type="email" [formControlName]="'email'"/>
       <mat-error *ngIf="email?.invalid">
         {{ email_error_text }}
       </mat-error>

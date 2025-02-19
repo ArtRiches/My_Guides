@@ -1,9 +1,18 @@
+p {
+  margin: 0;
+}
+
 .change-apply-btn {
   position: fixed;
-  top: 100;
-  left: 89.5%;
-  opacity: 1;
+  top: 93%;
+  left: 96%;
 }
+
+button {
+  font-size: 22px;
+  background-color: #4f2b69;
+}
+
 .main-div {
   display: flex;
   justify-content: center;
@@ -11,60 +20,26 @@
   height: 100%;
   margin: 2% 15%;
   gap: 20px;
-  padding-bottom: 70px;
+  padding-bottom: 100px;
 }
 
 .first-div {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
   width: 100%;
   font-family: "Tahoma";
   font-size: 38px;
-  height: max-content;
-}
+  align-items: baseline;
 
-.second-div {
-  display: flex;
-  width: 100%;
-  gap: 5%;
-  min-height: 588.56px;
-}
-
-.photos-div {
-  display: flex;
-  position: relative;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}
-
-.photo {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-
-.btn-div {
-  position: absolute;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 15px;
-  top: 50%;
-  gap: 675px;
-}
-
-button {
-  font-size: 22px;
-  background-color: #4f2b69;
-  opacity: 0.4;
+  mat-error {
+    font-size: 16px;
+  }
 }
 
 .favorite-btn {
-  opacity: 1;
   width: 32px;
   height: 32px;
   background-color: gray;
+  margin-left: 10px;
 }
 
 .favorite {
@@ -72,22 +47,93 @@ button {
   background-color: #4f2b69;
 }
 
-.next-btn:hover {
-  transition: 250ms;
-  opacity: 0.9;
+.second-div {
+  display: flex;
+  width: 100%;
+  gap: 3%;
+  min-height: 588.56px;
+  max-height: 588.56px;
 }
 
-.prev-btn:hover {
-  transition: 250ms;
-  opacity: 0.9;
+.photos-div {
+  display: flex;
+  position: relative;
+  width: 70%;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.uploadPhoto {
+  display: flex;
+  align-self: center;
+  margin: 0 37.7%;
+
+  p {
+    display: block;
+    position: relative;
+    top: 50%;
+    right: 135%;
+    width: max-content;
+  }
+
+  button {
+    width: max-content;
+  }
+}
+
+.prev-next-btn-container {
+  display: flex;
+  position: absolute;
+  align-self: center;
+  justify-content: space-between;
+  width: 100%;
+
+  & button {
+    margin: 0 8px;
+    font-size: 22px;
+    background-color: #4f2b69;
+    opacity: 0.35;
+
+    &:hover {
+      transition: 250ms;
+      opacity: 0.9;
+    }
+  }
+}
+
+.upload-delete-btn-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.delete-btn {
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 18px;
+  height: 28px;
+  width: 28px;
+  opacity: 0.35;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .info-div {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  height: 50%;
-  padding: 2%;
+  width: 27%;
+  padding: 1%;
+  height: max-content;
   border-radius: 0.5vw;
   box-shadow: 2px 3px 4px rgb(0, 0, 0);
 }
@@ -95,37 +141,53 @@ button {
 .title {
   font-family: "Tahoma";
   font-size: 28px;
+  margin: 0;
 }
 
-.info-description {
+.createInfo-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  p {
+    margin-bottom: 5px;
+  }
+}
+
+.cityStateForm-content {
+  display: flex;
+  justify-content: space-between;
   font-family: "Tahoma";
-  font-size: 18px;
-  white-space: pre-line;
+  font-size: 16px;
+}
+
+.transport-chip mat-chip-option mat-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .third-div {
   display: flex;
+  flex-direction: column;
   width: 100%;
-  gap: 3%;
-  margin-bottom: 100px;
+  margin-bottom: 25px;
+  margin-top: 45px;
+  gap: 40px;
 }
 
 .description-container {
-  min-width: 60%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 30px;
 }
 
-.descriptions-div {
-  font-family: "Tahoma";
-  font-size: 22px;
-  min-width: 100%;
-}
-
-textarea {
-  min-width: 100%;
-  max-width: 100%;
-  height: max-content;
-  font-family: "Tahoma";
-  font-size: 18px;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
 .name-input {
@@ -134,34 +196,8 @@ textarea {
   width: 100%;
 }
 
-.add-btn {
-  opacity: 1;
-}
-
-.delete-btn-div {
-  position: absolute;
-  display: flex;
-}
-
-.delete-btn-div button {
-  font-size: 18px;
-  height: 28px;
-  width: 28px;
-  margin: 8px;
-  margin-left: 742px;
-}
-
-.delete-btn-div button:hover {
-  opacity: 1;
-}
-
 .create-btn-container {
   width: 100%;
   display: flex;
   justify-content: center;
-}
-
-.create-btn {
-  width: max-content;
-  opacity: 1;
 }
